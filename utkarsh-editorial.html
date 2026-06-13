@@ -20,7 +20,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 /* ===================== TOKENS ===================== */
@@ -63,7 +63,7 @@ p{margin:0;line-height:1.58}
 img{display:block;max-width:100%}
 
 .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' result='noise'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='noise' scale='8'/%3E%3C/filter%3E%3Crect width='200' height='200' fill='%23221F19' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px}
 .bar{position:fixed;bottom:0;left:0;height:4px;width:100%;transform:scaleX(0);transform-origin:0 0;z-index:60;background:var(--orange);transition:transform .12s linear}
 
 /* ===================== SLIDE FRAME ===================== */
@@ -116,11 +116,11 @@ img{display:block;max-width:100%}
 .polaroid .img{min-height:200px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);background:#EFE7D2}
 .polaroid .cap{font-family:var(--hand);font-size:23px;color:var(--ink);text-align:center;padding:8px 0 1px;line-height:1}
 .polaroid .memo{font-family:var(--hand);font-size:16px;color:var(--c,var(--orange));text-align:center;padding:0 0 11px;line-height:1}
-.tape{position:absolute;top:-11px;left:50%;width:76px;height:24px;transform:translateX(-50%) rotate(var(--tr,-3deg));background:var(--tape,rgba(194,94,46,.3));border:1px solid rgba(255,255,255,.3);box-shadow:0 2px 5px rgba(0,0,0,.06)}
+.tape{position:absolute;top:-11px;left:50%;width:76px;height:24px;transform:translateX(-50%) rotate(var(--tr,-3deg));background:var(--tape,rgba(194,94,46,.3));border:1px solid rgba(255,255,255,.3);box-shadow:0 4px 8px rgba(34,31,25,.1);border-radius:1px}
 
 /* tags */
 .tags{display:flex;flex-wrap:wrap;gap:9px}
-.tag{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--ink);border:1.5px solid var(--line);border-radius:2px;padding:8px 13px;background:rgba(255,255,255,.3)}
+.tag{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--ink);border:1.5px solid var(--line);border-radius:2px;padding:8px 13px;background:rgba(255,255,255,.3);backdrop-filter:blur(4px)}
 .tag.dot::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--c,var(--orange));margin-right:8px;vertical-align:middle}
 
 .qmark{position:absolute;font-family:var(--serif);font-weight:700;line-height:.7;pointer-events:none;z-index:0;user-select:none}
@@ -160,7 +160,7 @@ img{display:block;max-width:100%}
 .mile .img{min-height:124px;margin-bottom:14px}
 .mile h3{font-family:var(--serif);font-weight:600;font-size:21px}
 .mile .sub{font-family:var(--sans);font-size:13px;color:var(--ink-soft);margin-top:5px}
-.mile .toptag{display:inline-block;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--gold);border-radius:2px;padding:5px 9px;margin-bottom:11px}
+.mile .toptag{display:inline-block;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--gold);border-radius:2px;padding:4px 9px;margin-bottom:8px}
 .mile .cert{font-family:var(--sans);font-size:11px;font-weight:500;color:var(--ink-soft);margin-top:6px;letter-spacing:.03em}
 
 /* ===================== 4 · OPEN SOURCE ===================== */
@@ -169,11 +169,11 @@ img{display:block;max-width:100%}
 .contrib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .ccard{background:rgba(239,231,213,.045);border:1px solid rgba(239,231,213,.18);border-radius:4px;padding:22px;transition:transform .3s,border-color .3s}
 .ccard:hover{transform:translateY(-5px);border-color:rgba(224,146,91,.5)}
-.ccard .clogo{width:44px;height:44px;border-radius:9px;background:rgba(239,231,213,.1);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:15px;font-weight:700;color:var(--orange-soft);margin-bottom:15px}
+.ccard .clogo{width:44px;height:44px;border-radius:9px;background:rgba(239,231,213,.1);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:15px;font-weight:700;color:var(--cream-soft)}
 .ccard h3{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--cream-tx);line-height:1.05}
 .ccard .crepo{font-family:var(--sans);font-size:12px;font-weight:500;color:var(--orange-soft);margin-top:4px;letter-spacing:.01em}
 .ccard p{font-family:var(--sans);font-size:13.5px;color:var(--cream-soft);margin-top:11px;line-height:1.5}
-.ccard .cstat{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-tx);margin-top:14px;display:inline-flex;align-items:center;gap:7px}
+.ccard .cstat{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-tx);margin-top:14px;display:inline-flex;align-items:center;gap:6px}
 .ccard .cstat::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--orange-soft)}
 
 /* ===================== 5 · RESEARCH ===================== */
@@ -185,7 +185,7 @@ img{display:block;max-width:100%}
 .result .finding{font-family:var(--sans);font-size:15px;color:var(--ink);max-width:24ch;line-height:1.45}
 .s7-media{position:relative}
 .s7-media .graph .img{min-height:clamp(280px,42vh,400px)}
-.findtag{position:absolute;top:11%;right:6%;z-index:3;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.04em;color:#fff;background:var(--orange);padding:8px 12px;border-radius:2px;box-shadow:0 8px 20px rgba(194,94,46,.4);display:flex;flex-direction:column;align-items:center;gap:1px}
+.findtag{position:absolute;top:11%;right:6%;z-index:3;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.04em;color:#fff;background:var(--orange);padding:8px 12px;border-radius:2px}
 .findtag .ar{font-size:16px}
 .paper{margin-top:18px;background:var(--paper);border-radius:2px;box-shadow:inset 0 0 0 1px var(--line);overflow:hidden}
 .paper .img{min-height:118px;border-radius:0;box-shadow:none;background:#EFE7D2}
@@ -193,7 +193,7 @@ img{display:block;max-width:100%}
 .paper .plabel{font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--c)}
 .paper .ptitle{font-family:var(--serif);font-weight:600;font-size:20px;margin-top:6px;line-height:1.16}
 .paper .ptags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.paper .ptags span{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);border:1.5px solid var(--line);border-radius:2px;padding:5px 10px}
+.paper .ptags span{font-family:var(--sans);font-size:10px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft);border:1.5px solid var(--line);border-radius:2px;padding:4px 8px}
 
 /* ===================== 6 · COMMUNITY ===================== */
 .s6 .inner{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
@@ -267,7 +267,7 @@ img{display:block;max-width:100%}
       <h1 class="hero-name" data-reveal style="--d:.05s">Utkarsh<br>Bahuguna</h1>
       <div class="namebar" data-reveal style="--d:.1s"></div>
       <p class="hero-statement" data-reveal style="--d:.15s">I build things, then I break them on purpose, <span class="accent">so the world can trust them.</span></p>
-      <p class="lead hero-sub" data-reveal style="--d:.25s">A developer and security researcher. He ships products, contributes to the open source tools the field is built on, and publishes independent research on how AI systems fail. He also leads a builder community and competes as a national athlete, which is where the discipline behind the work comes from.</p>
+      <p class="lead hero-sub" data-reveal style="--d:.25s">A developer and security researcher. He ships products, contributes to the open source tools the field is built on, and publishes independent research on how AI systems fail.</p>
       <div class="tags hero-creds" data-reveal style="--d:.32s">
         <span class="tag dot">Meta × PyTorch Finalist</span>
         <span class="tag dot">Google Gen AI Academy</span>
@@ -275,12 +275,12 @@ img{display:block;max-width:100%}
       </div>
     </div>
     <div class="hero-photo" data-reveal style="--d:.2s">
-      <!-- REPLACE: portrait -->
-      <div class="img"><img class="ph-img" src="Portrait_Photo.png" alt="Utkarsh Bahuguna"></div>
+      <!-- TEMPORARY: portrait placeholder -->
+      <div class="img"><span class="lab">[ PORTRAIT PHOTO ]</span></div>
       <div class="polaroid hero-polaroid">
         <span class="tape" style="--tape:rgba(46,110,102,.32);--tr:5deg"></span>
-        <!-- REPLACE: a project / build screenshot, not a sports photo -->
-        <div class="img"><img class="ph-img" src="Yojaka_SS.png" alt="Yojaka project screenshot"></div>
+        <!-- TEMPORARY: project screenshot placeholder -->
+        <div class="img"><span class="lab">[ PROJECT SCREENSHOT ]</span></div>
         <div class="cap">where it started</div>
       </div>
     </div>
@@ -305,13 +305,13 @@ img{display:block;max-width:100%}
     </div>
     <div class="s2-media" data-reveal style="--d:.2s">
       <figure class="fig big">
-        <!-- REPLACE: hero screenshot -->
-        <div class="img"><span class="lab">[ WEBSITE_SCREENSHOT_1 ]</span></div>
+        <!-- TEMPORARY: website screenshot placeholder -->
+        <div class="img"><span class="lab">[ WEBSITE SCREENSHOT 1 ]</span></div>
         <figcaption>Fig. 01 · The portfolio, in full</figcaption>
       </figure>
       <figure class="fig small">
-        <!-- REPLACE: detail screenshot -->
-        <div class="img"><span class="lab">[ WEBSITE_SCREENSHOT_2 ]</span></div>
+        <!-- TEMPORARY: detail screenshot placeholder -->
+        <div class="img"><span class="lab">[ WEBSITE SCREENSHOT 2 ]</span></div>
         <figcaption>Fig. 02 · A detail</figcaption>
       </figure>
     </div>
@@ -334,26 +334,26 @@ img{display:block;max-width:100%}
       <div class="mile">
         <span class="num">1</span>
         <span class="toptag">Tech Excellence Award</span>
-        <figure class="fig"><div class="img"><img class="ph-img" src="Excellence.JPG" alt="Utkarsh receiving the Tech Excellence Award for ThreatSim"></div></figure>
+        <figure class="fig"><div class="img"><span class="lab">[ AWARD PHOTO ]</span></div></figure>
         <h3>ThreatSim</h3><div class="sub">A threat-simulation platform</div>
         <div class="cert">Acknowledged by ISRO</div>
       </div>
       <div class="mile">
         <span class="num">2</span>
         <span class="toptag">Meta × PyTorch · Global Finalist</span>
-        <figure class="fig"><div class="img"><span class="lab">[ HACKATHON_PROJECT ]</span></div></figure>
+        <figure class="fig"><div class="img"><span class="lab">[ HACKATHON PROJECT ]</span></div></figure>
         <h3>Hackathons</h3><div class="sub">An RL agent that diagnoses failing systems</div>
         <div class="cert">Solo finalist, global field</div>
       </div>
       <div class="mile">
         <span class="num">3</span>
-        <figure class="fig"><div class="img"><span class="lab">Open Source</span></div></figure>
+        <figure class="fig"><div class="img"><span class="lab">[ OPEN SOURCE ]</span></div></figure>
         <h3>Open Source</h3><div class="sub">Security and AI infrastructure</div>
         <div class="cert">Merged across major projects</div>
       </div>
       <div class="mile">
         <span class="num">4</span>
-        <figure class="fig"><div class="img"><span class="lab">Research</span></div></figure>
+        <figure class="fig"><div class="img"><span class="lab">[ RESEARCH ]</span></div></figure>
         <h3>Research</h3><div class="sub">Testing what the field assumes</div>
         <div class="cert">Independent, sole author</div>
       </div>
@@ -433,14 +433,14 @@ img{display:block;max-width:100%}
     </div>
     <div class="s7-media" data-reveal style="--d:.2s">
       <figure class="fig graph">
-        <!-- REPLACE: research graph -->
-        <div class="img"><span class="lab">[ RESEARCH_GRAPH ]</span></div>
+        <!-- TEMPORARY: research graph placeholder -->
+        <div class="img"><span class="lab">[ RESEARCH GRAPH ]</span></div>
         <figcaption>Fig. 01 · GPQA Diamond, accuracy under self-consistency</figcaption>
       </figure>
       <div class="findtag">Majority vote underperforms<span class="ar">↓</span></div>
       <div class="paper">
-        <!-- REPLACE: paper preview -->
-        <div class="img"><span class="lab">[ RESEARCH_PAPER_PREVIEW ]</span></div>
+        <!-- TEMPORARY: paper preview placeholder -->
+        <div class="img"><span class="lab">[ RESEARCH PAPER PREVIEW ]</span></div>
         <div class="pmeta">
           <div class="plabel">Paper · Preprint</div>
           <div class="ptitle">When Self-Consistency Backfires</div>
@@ -457,19 +457,19 @@ img{display:block;max-width:100%}
   <div class="inner">
     <div class="s6-media" data-reveal style="--d:.15s">
       <figure class="fig vyom">
-        <!-- REPLACE: VYOM -->
-        <div class="img"><img class="ph-img" src="VYOM.png" alt="VYOM community"></div>
+        <!-- TEMPORARY: VYOM community placeholder -->
+        <div class="img"><span class="lab">[ VYOM COMMUNITY ]</span></div>
         <figcaption>Fig. 01 · VYOM</figcaption>
       </figure>
       <div class="s6-support">
-        <div class="polaroid sp1"><span class="tape" style="--tape:rgba(122,61,84,.28);--tr:5deg"></span><div class="img"><img class="ph-img" src="featured.jpg" alt="Featured on content creator's podcast thumbnail"></div><div class="cap">featured</div></div>
-        <div class="polaroid sp2"><span class="tape" style="--tape:rgba(194,94,46,.28);--tr:-5deg"></span><div class="img"><img class="ph-img" src="Scaler_podcast.png" alt="Scaler podcast episode"></div><div class="cap">podcast</div></div>
-        <div class="polaroid sp3"><span class="tape" style="--tape:rgba(46,110,102,.28);--tr:5deg"></span><div class="img"><img class="ph-img" src="Teamwork.jpg" alt="Team presenting at hackathon"></div><div class="cap">hackathon</div></div>
+        <div class="polaroid sp1"><span class="tape" style="--tape:rgba(122,61,84,.28);--tr:5deg"></span><div class="img"><span class="lab">[ FEATURED ]</span></div><div class="cap">Featured</div></div>
+        <div class="polaroid sp2"><span class="tape" style="--tape:rgba(194,94,46,.28);--tr:-5deg"></span><div class="img"><span class="lab">[ PODCAST ]</span></div><div class="cap">Podcast</div></div>
+        <div class="polaroid sp3"><span class="tape" style="--tape:rgba(46,110,102,.28);--tr:5deg"></span><div class="img"><span class="lab">[ TEAMWORK ]</span></div><div class="cap">Teamwork</div></div>
       </div>
     </div>
     <div class="stack">
       <div class="kicker" data-reveal><span class="idx">06</span><span class="rule"></span><span>Leadership</span></div>
-      <blockquote class="bigquote" data-reveal style="--d:.08s"><span class="mk">“</span>I didn't want a title. I wanted a room where people could build.<span class="mk">”</span></blockquote>
+      <blockquote class="bigquote" data-reveal style="--d:.08s"><span class="mk">"</span>I didn't want a title. I wanted a room where people could build.<span class="mk">"</span></blockquote>
       <div class="connote" data-reveal style="--d:.16s">VYOM is my attempt to remove the luck from finding the right room.</div>
       <div class="metrics" data-reveal style="--d:.24s">
         <!-- UPDATE: real numbers -->
@@ -477,7 +477,7 @@ img{display:block;max-width:100%}
         <div class="metric"><div class="n">5</div><div class="l">Events</div></div>
         <div class="metric"><div class="n">200</div><div class="l">Participants</div></div>
       </div>
-      <p class="lead" data-reveal style="--d:.3s">I run a community for builders, organize events, and bring people together around shipping real things. The best opportunities in my life came from being in the right room. I wanted to build that room for others.</p>
+      <p class="lead" data-reveal style="--d:.3s">I run a community for builders, organize events, and bring people together around shipping real things. The best opportunities in my life came from being in the right room at the right time.</p>
     </div>
   </div>
 </section>
@@ -489,13 +489,13 @@ img{display:block;max-width:100%}
     <div class="head">
       <div class="kicker" data-reveal><span class="idx">07</span><span class="rule"></span><span>The discipline behind it</span></div>
       <h2 class="serif-xl" data-reveal style="--d:.05s">Where the habits get practiced.</h2>
-      <p class="lead" data-reveal style="--d:.12s;margin-top:16px">I compete as a national-level athlete and play four instruments. Sport taught me how to lose and improve anyway. Music taught me patience. It is the same deliberate practice I bring to the work, just a different arena.</p>
+      <p class="lead" data-reveal style="--d:.12s;margin-top:16px">I compete as a national-level athlete and play four instruments. Sport taught me how to lose and improve anyway. Music taught me precision, discipline, and timing.</p>
     </div>
     <div class="sheet" data-reveal style="--d:.18s">
-      <div class="polaroid pr1"><span class="tape" style="--tape:rgba(194,94,46,.3);--tr:6deg"></span><div class="img"><span class="lab">[ TABLE_TENNIS ]</span></div><div class="cap">Table Tennis</div><div class="memo">national &amp; state</div></div>
-      <div class="polaroid pr2"><span class="tape" style="--tape:rgba(46,110,102,.3);--tr:-5deg"></span><div class="img"><span class="lab">[ BADMINTON ]</span></div><div class="cap">Badminton</div><div class="memo">competitive</div></div>
-      <div class="polaroid pr3"><span class="tape" style="--tape:rgba(176,144,47,.32);--tr:5deg"></span><div class="img"><img class="ph-img" src="Guitar.jpg" alt="Utkarsh playing guitar"></div><div class="cap">Guitar</div><div class="memo">daily practice</div></div>
-      <div class="polaroid pr4"><span class="tape" style="--tape:rgba(122,61,84,.3);--tr:-4deg"></span><div class="img"><img class="ph-img" src="Keyboard.png" alt="Utkarsh playing Casio keyboard"></div><div class="cap">Studio</div><div class="memo">kalimba, keys, ukulele</div></div>
+      <div class="polaroid pr1"><span class="tape" style="--tape:rgba(194,94,46,.3);--tr:6deg"></span><div class="img"><span class="lab">[ TABLE TENNIS ]</span></div><div class="cap">Table Tennis</div></div>
+      <div class="polaroid pr2"><span class="tape" style="--tape:rgba(46,110,102,.3);--tr:-5deg"></span><div class="img"><span class="lab">[ BADMINTON ]</span></div><div class="cap">Badminton</div></div>
+      <div class="polaroid pr3"><span class="tape" style="--tape:rgba(176,144,47,.32);--tr:5deg"></span><div class="img"><span class="lab">[ GUITAR ]</span></div><div class="cap">Guitar</div></div>
+      <div class="polaroid pr4"><span class="tape" style="--tape:rgba(122,61,84,.3);--tr:-4deg"></span><div class="img"><span class="lab">[ KEYBOARD ]</span></div><div class="cap">Keyboard</div></div>
     </div>
   </div>
 </section>
